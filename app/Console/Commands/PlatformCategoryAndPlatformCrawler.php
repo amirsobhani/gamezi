@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Http;
 use Modules\Game\Entities\Platform;
 use Modules\Game\Entities\PlatformCategory;
 
-class PlatformCategoryCrawler extends Command
+class PlatformCategoryAndPlatformCrawler extends Command
 {
     /**
      * The name and signature of the console command.
@@ -46,7 +46,7 @@ class PlatformCategoryCrawler extends Command
         ]);
 
         foreach ($res['results'] as $item) {
-            PlatformCategory::query()->updateOrCreate(
+            $category = PlatformCategory::query()->updateOrCreate(
                 [
                     'name' => $item['name']
                 ],
@@ -54,6 +54,21 @@ class PlatformCategoryCrawler extends Command
                     'slug' => $item['slug'],
                 ]
             );
+
+            foreach ($item['platforms'] as $platform) {
+                Platform::query()->updateOrCreate(
+                    [
+                        'alias' => $platform['name']
+                    ],
+                    [
+                        'platform_category_id' => $category->id,
+                        'rawg_id' => $platform['id'],
+                        'slug' => $platform['slug'],
+                        'release_time' => $platform['year_start'],
+                        'end_time' => $platform['year_end']
+                    ]
+                );
+            }
 
             echo $item['name'] . PHP_EOL;
         }

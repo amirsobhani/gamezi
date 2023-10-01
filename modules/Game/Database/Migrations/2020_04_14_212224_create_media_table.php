@@ -17,10 +17,9 @@ return new class extends Migration {
             $table->string('name');
             $table->string('file_name');
             $table->string('path');
-            $table->tinyInteger('type');
-            $table->tinyInteger('mime_type');
-            $table->tinyInteger('format');
-            $table->tinyInteger('size');
+            $table->string('type');
+            $table->string('mime_type');
+            $table->integer('size');
             $table->string('preview')->nullable();
             $table->softDeletes();
             $table->timestamps();

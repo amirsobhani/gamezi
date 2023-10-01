@@ -17,7 +17,7 @@ return new class extends Migration {
             $table->integer('rawg_id')->nullable();
             $table->unsignedBigInteger('esrb_rating_id')->nullable();
             $table->foreign('esrb_rating_id')->on('esrb_ratings')->references('id');
-            $table->string('slug');
+            $table->string('slug')->nullable();
             $table->string('name')->nullable();
             $table->text('description')->nullable();
             $table->text('description_en')->nullable();

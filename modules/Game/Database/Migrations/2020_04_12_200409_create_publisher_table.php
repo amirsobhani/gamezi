@@ -14,7 +14,7 @@ return new class extends Migration {
     {
         Schema::create('publishers', function (Blueprint $table) {
             $table->id();
-            $table->integer('rawg_id');
+            $table->integer('rawg_id')->nullable();
             $table->string('alias');
             $table->string('name')->nullable();
             $table->string('logo')->nullable();

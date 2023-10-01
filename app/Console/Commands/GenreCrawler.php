@@ -3,12 +3,10 @@
 namespace App\Console\Commands;
 
 
-use Game_Platform\Models\Genre;
-use Game_Platform\Models\Media;
-use Game_Platform\Models\Platform;
-use Game_Platform\Models\PlatformCategory;
+
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
+use Modules\Game\Entities\Genre;
 
 class GenreCrawler extends Command
 {

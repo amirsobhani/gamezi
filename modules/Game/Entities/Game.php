@@ -14,8 +14,6 @@ class Game extends Model
 
     const Global = 1, Private = 0;
 
-    protected $table = 'game';
-
     protected $fillable = [
         'rawg_id',
         'esrb_rating_id',

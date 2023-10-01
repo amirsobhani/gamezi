@@ -8,6 +8,7 @@ class Media extends Model
 {
     const ImageType = 0, VideoType = 1;
 
+    protected $table = 'medias';
     protected $fillable = [
         'bucket',
         'name',
@@ -15,7 +16,6 @@ class Media extends Model
         'path',
         'type',
         'mime_type',
-        'format',
         'size',
         'preview',
     ];
